@@ -1,11 +1,19 @@
-import rss, { pagesGlobToRssItems } from '@astrojs/rss';
+// import rss, { pagesGlobToRssItems } from '@astrojs/rss';
+
+import { getCollection } from "astro:content";
+import rss from "@astrojs/rss";
 
 export async function GET(context) {
-    return rss({
-        title: 'Parazok Personal Weblog',
-        description: 'Things I like to share plus other things!',
-        site: context.site,
-        items: await pagesGlobToRssItems(import.meta.glob('./**/*.md')),
-        customData: `<language>en-us</language>`,
-    });
+  return rss({
+    title: "Parazok Personal Weblog",
+    description: "Things I like to share plus other things!",
+    site: context.site,
+    items: posts.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.pubDate,
+      description: post.data.description,
+      link: `/posts/${post.id}/`,
+    })),
+    customData: `<language>en-us</language>`,
+  });
 }
