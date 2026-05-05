@@ -1,7 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import preact from "@astrojs/preact";
+
 // https://astro.build/config
 export default defineConfig({
-    site: "https://doggydev.ir"
+  site: "https://doggydev.ir",
+  integrations: [preact()]
 });
