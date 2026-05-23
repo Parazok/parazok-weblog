@@ -15,8 +15,10 @@
     "@astrojs/preact": "^5.1.2",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/ts-plugin": "^1.10.7",
+    "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.2.2",
-    "preact": "^10.29.1"
+    "preact": "^10.29.1",
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "prettier": "3.8.3",

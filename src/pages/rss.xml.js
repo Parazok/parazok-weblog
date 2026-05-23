@@ -1,6 +1,7 @@
 // import rss, { pagesGlobToRssItems } from '@astrojs/rss';
 
 import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
 import rss from "@astrojs/rss";
 
 export async function GET(context) {

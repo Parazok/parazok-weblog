@@ -1,6 +1,11 @@
-<div id="main-menu" class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about/">About</a>
-  <a href="/blog/">Blog</a>
-  <a href="/tags/">Tags</a>
+<div id="main-menu" class="nav-links hidden flex-col gap-0.5">
+    <a href="/" class="p-2 text-center bg-lime-50">صفحه اول</a>
+    <a href="/blog/" class="p-2 text-center bg-lime-50">وبلاگ</a>
+    <a href="/tags/" class="p-2 text-center bg-lime-50">تگ ها</a>
+    <a href="/about/" class="p-2 text-center bg-lime-50">من کیم؟</a>
 </div>
+<style is:global>
+    :has(.menu[aria-expanded="true"]) .nav-links {
+        display: flex;
+    }
+</style>

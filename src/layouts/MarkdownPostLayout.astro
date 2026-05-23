@@ -3,41 +3,33 @@ import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-  <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+<BaseLayout pageTitle={frontmatter.title} showTitle={true}>
+    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
 
-  <div class="tags">
-    {
-      frontmatter.tags.map((tag: string) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
-    }
-  </div>
+    <div class="post-body px-4 text-md font-medium">
+        <div class="tags flex flex-row justify-start align-middle">
+            <p class="content-center ml-4 text-base">تگ ها:</p>
+            {
+                frontmatter.tags.map((tag: string) => (
+                    <a
+                        class="tag text-sm px-1 border rounded-sm shadow-sm ml-1 content-center"
+                        href={`/tags/${tag}`}
+                    >
+                        {tag}
+                    </a>
+                ))
+            }
+        </div>
 
-  <slot />
+        <div class="main-content mt-4">
+            <slot />
+        </div>
+    </div>
 </BaseLayout>
 
-<style>
-  a {
-    color: #00539f;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
-  }
+<style is:global>
+    .main-content h2 {
+        font-weight: bold;
+        font-size: 1.3em;
+    }
 </style>
