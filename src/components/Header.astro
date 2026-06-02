@@ -1,13 +1,13 @@
 ---
 import Navigation from "./Navigation.astro";
-import Menu from "./Menu.astro";
-import ThemeIcon from "./ThemeIcon.astro";
+import Menu from "./icons/MenuIcon.astro";
+import ThemeIcon from "./icons/ChangeThemeIcon.astro";
 ---
 
-<header>
+<header class="w-full">
     <nav class="bg-linear-30 from-lime-300 via-lime-200 to-lime-300 shadow-md">
-        <div class="flex flex-row-reverse justify-between py-2 px-4">
-            <ThemeIcon />
+        <div class="flex flex-row justify-between py-2 px-4">
+            <!-- <ThemeIcon /> -->
             <Menu />
         </div>
         <Navigation />

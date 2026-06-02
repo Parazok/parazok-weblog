@@ -1,14 +1,35 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
 const { frontmatter } = Astro.props;
+const formatted_date = new Intl.DateTimeFormat("en-CA").format(
+    frontmatter.pubDate,
+);
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/post-assets/*.{jpeg,jpg,png,gif,webp}",
+);
+const base_post_images_path = "/src/assets/post-assets/";
+var image_path = base_post_images_path + frontmatter.image.name;
+if (!images[image_path])
+    image_path = base_post_images_path + "post-def-image.webp";
 ---
 
 <BaseLayout pageTitle={frontmatter.title} showTitle={true}>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <Image
+        class="mb-4"
+        src={images[image_path]()}
+        alt={frontmatter.image.alt}
+    />
 
-    <div class="post-body px-4 text-md font-medium">
-        <div class="tags flex flex-row justify-start align-middle">
-            <p class="content-center ml-4 text-base">تگ ها:</p>
+    <div class="post-body px-4 text-md font-medium text-justify">
+        <p class="text-sm font-light">{formatted_date}</p>
+        <h1 class="mb-4">{frontmatter.title}</h1>
+
+        <div class="main-content mt-4">
+            <slot />
+        </div>
+        <div class="tags flex flex-row justify-start align-middle mb-4">
+            <p class="content-center ml-4 text-base mb-0">تگ ها:</p>
             {
                 frontmatter.tags.map((tag: string) => (
                     <a
@@ -20,16 +41,19 @@ const { frontmatter } = Astro.props;
                 ))
             }
         </div>
-
-        <div class="main-content mt-4">
-            <slot />
-        </div>
     </div>
 </BaseLayout>
 
 <style is:global>
-    .main-content h2 {
-        font-weight: bold;
-        font-size: 1.3em;
+    img {
+        width: 100%;
+    }
+    .main-content h2,
+    .main-content h3,
+    .main-content h4,
+    .main-content h5,
+    .main-content p {
+        margin-bottom: 0.6em;
+        line-height: 2em;
     }
 </style>
