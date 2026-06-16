@@ -8,31 +8,28 @@ const allPosts = await getCollection("blog");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <section class="p-5 bg-lime-200 rounded-2xl m-4 text-xl shadow-md">
-        <h2 class="font-bold mb-2 mt-4">سلام بر شما من پارازوک هستم.</h2>
-        <p class="font-medium">
-            خیلی آدم خاص و مهمی نیستم و صرفا از سر علاقه اینجا درمورد چیزایی که
-            دوست دارم صحبت می کنم. بیشتر این مدت هم درمورد موضوعاتی مثل:
-            <span id="top-categories">
-                <a href="#">برنامه نویسی</a>,
-                <a href="#">زندگی</a> و
-                <a href="#">یسری چیزای دیگه </a>
-            </span>
-            صحبت کردم.
-        </p>
-    </section>
-    <section class="p-4">
-        <h2 class="text-lg font-bold">آخرین پست های من:</h2>
+  <section class="m-4 rounded-2xl bg-lime-200 p-5 text-xl shadow-md">
+    <h2 class="mt-4 mb-2 font-bold">سلام بر شما من پارازوک هستم.</h2>
+    <p class="font-medium">
+      از سر علاقه اینجا درمورد چیزایی که دوست دارم صحبت می کنم. بیشتر این مدت هم
+      درمورد موضوعاتی مثل:
+      <span id="top-categories">
+        <a href="#">برنامه نویسی</a>,
+        <a href="#">زندگی</a> و
+        <a href="#">یسری چیزای دیگه </a>
+      </span>
+      صحبت کردم.
+    </p>
+  </section>
+  <section class="p-4">
+    <h2 class="text-lg font-bold">آخرین پست های من:</h2>
 
-        {
-            allPosts.map((post: any) => (
-                <li>
-                    <BlogPost
-                        url={`/posts/${post.id}/`}
-                        title={post.data.title}
-                    />
-                </li>
-            ))
-        }
-    </section>
+    {
+      allPosts.map((post: any) => (
+        <li>
+          <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
+        </li>
+      ))
+    }
+  </section>
 </BaseLayout>

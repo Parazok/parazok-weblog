@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /
+
+Sitemap: https://parazok.ir/sitemap-index.xml
+
+
+# This Project was Made By PARAZOK

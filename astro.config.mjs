@@ -5,10 +5,12 @@ import preact from "@astrojs/preact";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://parazok.ir",
-  integrations: [preact()],
+  integrations: [preact(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()],
